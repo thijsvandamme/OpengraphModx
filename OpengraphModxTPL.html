@@ -1,0 +1,30 @@
+<!-- Begin Facebook tags -->
+<meta property="og:title" content="[[*pagetitle]]" />
+<meta property="og:url" content="[[!++site_url]][[*uri]]" />
+<meta property="og:description" content="[[*description]]" />
+<!-- This Requires the Modx If addon (http://modx.com/extras/package/if) + You need to create a TV called "SocialImage" and give it access to all your pages, If there is no image selected it will default to the image url you set in the first declaration -->
+[[If?
+   &subject=`[[*SocialImage]]`
+   &operator=`isempty`
+   &then=`<meta property="og:image" content="Default Image (logo for example)" />`
+   &else=`<meta property="og:image" content="[[!++site_url]][[*SocialImage]]" />`
+]]
+<!-- Use this handy tool to get your ID (http://findmyfacebookid.com/) -->
+<meta property="fb:page_id" content="###############" />
+<meta property="og:type" content="website" />
+<!-- End Facebook tags -->
+
+<!-- Begin Twitter tags -->
+<meta name="twitter:card" content="[[*description]]" />
+<meta name="twitter:title" content="[[*pagetitle]]" />
+<meta name="twitter:url" content="[[++site_url]][[*uri]]" />
+
+[[If?
+   &subject=`[[*SocialImage]]`
+   &operator=`isempty`
+   &then=`<meta name="twitter:image" content="Default Image (logo for example)" />`
+   &else=`<meta name="twitter:image" content="[[!++site_url]][[*SocialImage]]" />`
+]]
+<meta name="creator" content="[[If? &subject=`[[*publishedby]]` &operator=`>` &operand=`0` &then=`[[*publishedby:userinfo=`fullname`]]` &else=`[[*createdby:userinfo=`fullname`]]`]]"/>
+<!-- End Twitter tags -->
+
